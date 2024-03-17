@@ -16,6 +16,7 @@
   "author": "heitor kunrath",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.8",
     "dotenv": "^16.4.5"
   }
 }
