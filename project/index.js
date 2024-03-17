@@ -8,5 +8,11 @@ const main = async () => {
     console.log("Got no Data from the API");
     return;
   }
+  const previousYear = getPreviousYear();
+  const topEarnersTransactions = topEarnerTransactions(
+    data.transactions,
+    previousYear
+  );
+  console.log(topEarnersTransactions);
 };
 main();
