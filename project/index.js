@@ -4,6 +4,7 @@ import {
   topEarnerTransactions,
 } from "./transactions/services/analytics/index.js";
 import { fetchTransactions } from "./transactions/services/webService/fetchTransactions.js";
+import { submitAlphaTransactions } from "./transactions/services/webService/submitDataTransactions.js";
 
 const main = async () => {
   const data = await fetchTransactions();
@@ -21,6 +22,10 @@ const main = async () => {
     return;
   }
   const alphaTransactions = findAlphaTransactions(topEarnersTransactions);
-  console.log(alphaTransactions);
+  const submitStatus = await submitAlphaTransactions(data.id, alphaTransactions);
+  console.log(
+    "Submission Status:",
+    submitStatus === 200 ? "Success" : "Failed"
+  );
 };
 main();
