@@ -1,3 +1,9 @@
+export const findAlphaTransactions = (transactions) => {
+  return transactions
+    .filter((transaction) => transaction.type === "alpha")
+    .map((transaction) => transaction.id);
+};
+
 export const topEarnerTransactions = (transactions, targetYear) => {
   let employeesDic = {};
   for (let transaction of transactions) {

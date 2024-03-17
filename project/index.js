@@ -1,5 +1,8 @@
 import { getPreviousYear } from "./transactions/helpers/date.js";
-import { topEarnerTransactions } from "./transactions/services/analytics/index.js";
+import {
+  findAlphaTransactions,
+  topEarnerTransactions,
+} from "./transactions/services/analytics/index.js";
 import { fetchTransactions } from "./transactions/services/webService/fetchTransactions.js";
 
 const main = async () => {
@@ -13,6 +16,11 @@ const main = async () => {
     data.transactions,
     previousYear
   );
-  console.log(topEarnersTransactions);
+  if (!topEarnersTransactions) {
+    console.log("No top earner found for last year.");
+    return;
+  }
+  const alphaTransactions = findAlphaTransactions(topEarnersTransactions);
+  console.log(alphaTransactions);
 };
 main();
