@@ -1,4 +1,4 @@
-import { TransactionApiRepository } from "./transactions/infrastructure/api/transactions/TransactionApiRepository";
+import { TransactionApiRepository } from "./transactions/infrastructure/api/transaction/TransactionApiRepository";
 import { TransactionProcessor } from "./transactions/services/TransactionProcessor";
 import { getPreviousYear } from "./transactions/helpers/date";
 

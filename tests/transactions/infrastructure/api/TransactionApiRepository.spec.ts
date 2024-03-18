@@ -1,8 +1,8 @@
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import { TransactionApiRepository } from "../../../../src/transactions/infrastructure/api/transactions/TransactionApiRepository";
+import { TransactionApiRepository } from "../../../../src/transactions/infrastructure/api/transaction/TransactionApiRepository";
 import { v4 as uuidv4 } from "uuid";
-import { TransactionResponse } from "../../../../src/transactions/infrastructure/api/transactions/TransactionApiRepositoryDTO";
+import { TransactionResponse } from "../../../../src/transactions/infrastructure/api/transaction/TransactionApiRepositoryDTO";
 
 describe("TransactionApiRepository", () => {
   const mockAxios = new AxiosMockAdapter(axios);
