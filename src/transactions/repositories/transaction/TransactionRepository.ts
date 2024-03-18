@@ -1,4 +1,4 @@
-import { Transaction } from "../../entities/Transaction";
+import { Transaction } from "../../entities/transaction";
 
 export interface ITransactionRepository {
   fetchTransactions(): Promise<TransactionFetchResult>;

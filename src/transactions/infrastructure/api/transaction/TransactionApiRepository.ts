@@ -1,11 +1,11 @@
 import axios from "axios";
-import { Transaction } from "../../../entities/Transaction";
 import {
   ITransactionRepository,
   TransactionFetchResult,
 } from "../../../repositories/transaction/TransactionRepository";
 import { TransactionResponse } from "./TransactionApiRepositoryDTO";
 import "dotenv/config";
+import { Transaction } from "../../../entities/transaction";
 
 export class TransactionApiRepository implements ITransactionRepository {
   async fetchTransactions(): Promise<TransactionFetchResult> {

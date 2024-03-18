@@ -1,7 +1,7 @@
 import {
   Employee,
   Transaction,
-} from "../../../src/transactions/entities/Transaction";
+} from "../../../src/transactions/entities/transaction";
 import { TransactionProcessor } from "../../../src/transactions/services/TransactionProcessor";
 
 describe("TransactionProcessor", () => {
