@@ -2,7 +2,10 @@
 #### Author: Heitor Kunrath
 
 ## Overview
-This repository contains a Node.js application designed to handle a specific challenge involving HTTP requests and data processing. The task involves making a GET request to an API, processing the retrieved data, and then making a POST request with specific data derived from the GET request.
+This repository hosts two versions of a Node.js application designed to address a specific programming challenge. The challenge involves making an HTTP GET request to an API, processing the retrieved data, and subsequently making a POST request with specific data derived from the initial GET request.
+
+- The more elaborate and recent version made with TS is available on the `main` branch and also on the `V2` branch.
+- A simpler, initial version of the solution using JS can be found on the `V1` branch.
 
 
 
