@@ -2,34 +2,58 @@ import { TransactionApiRepository } from "./transactions/infrastructure/api/tran
 import { TransactionProcessor } from "./transactions/services/TransactionProcessor";
 import { getPreviousYear } from "./transactions/helpers/date";
 import { TaskSubmissionAPIRepository } from "./transactions/infrastructure/api/task/TaskSubmissionAPIRepository";
+import { TaskSubmissionStatus } from "./transactions/repositories/task/TaskRepository";
+import { TransactionFetchResult } from "./transactions/repositories/transaction/TransactionRepository";
 
-async function main() {
-  const repository = new TransactionApiRepository();
 
-  const transactionsFetchResult = await repository.fetchTransactions();
-  if (transactionsFetchResult.error) {
-    console.log("Error fetching: ", transactionsFetchResult.error);
-    return;
+async function main(): Promise<void> {
+  try {
+    const transactionData = await fetchTransactions();
+    const transactionIDs = processTransactions(transactionData);
+
+    const taskResult: TaskSubmissionStatus = await submitTask(
+      transactionData.data.id,
+      transactionIDs
+    );
+    console.log("Task Result: ", taskResult);
+  } catch (error: any) {
+    console.error("An error occurred: ", error.message);
   }
-  const fetchId = transactionsFetchResult.data.id;
-  const transactions = transactionsFetchResult.data.transactions;
-  const transactionProcessor = new TransactionProcessor(transactions);
-  const topEarnersAlphaTransactionsFromLastYear = transactionProcessor
+}
+
+async function fetchTransactions(): Promise<TransactionFetchResult> {
+  const repository = new TransactionApiRepository();
+  const result = await repository.fetchTransactions();
+
+  if (result.error) {
+    throw new Error(result.error);
+  }
+  return result;
+}
+
+function processTransactions(
+  transactionData: TransactionFetchResult
+): string[] {
+  const transactionProcessor = new TransactionProcessor(
+    transactionData.data.transactions
+  );
+  const topEarnersAlphaTransactions = transactionProcessor
     .filterByTopEarner()
     .filterByYear(getPreviousYear())
     .filterByType("alpha")
     .getTransactions();
 
-  const transactionIDs = topEarnersAlphaTransactionsFromLastYear.map(
+  return topEarnersAlphaTransactions.map(
     (transaction) => transaction.transactionID
   );
+}
 
+async function submitTask(
+  id: string,
+  transactionIDs: string[]
+): Promise<TaskSubmissionStatus> {
   const taskSubmissionRepository = new TaskSubmissionAPIRepository();
-  const taskResult = await taskSubmissionRepository.submitTask({
-    id: fetchId,
-    transactionIDs: transactionIDs,
-  });
-  console.log("Task Result: ", taskResult);
+  return await taskSubmissionRepository.submitTask({ id, transactionIDs });
 }
 
 main();
