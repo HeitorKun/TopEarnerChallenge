@@ -1,6 +1,6 @@
 
 export interface ITaskRepository {
-  submitTask(payload: {
+  submitTask(data: {
     id: string;
     transactionIDs: string[];
   }): Promise<TaskSubmissionStatus>;
