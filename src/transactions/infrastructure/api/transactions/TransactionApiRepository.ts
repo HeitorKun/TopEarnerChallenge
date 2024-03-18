@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Transaction } from "../../entities/transaction";
+import { Transaction } from "../../../entities/transaction";
 import {
   ITransactionRepository,
   TransactionFetchResult,
-} from "../../repositories/transactionRepository";
+} from "../../../repositories/transactionRepository";
 import { TransactionResponse } from "./TransactionApiRepositoryDTO";
 import "dotenv/config";
 
