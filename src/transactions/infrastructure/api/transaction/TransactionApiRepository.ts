@@ -28,14 +28,12 @@ export class TransactionApiRepository implements ITransactionRepository {
       );
 
       return {
-        id: response.data.id,
-        data: transactions,
+        data: { id: response.data.id, transactions: transactions },
         error: undefined,
       };
     } catch (error) {
       return {
-        id: null,
-        data: [],
+        data: null,
         error: error.message || "Unknown error",
       };
     }

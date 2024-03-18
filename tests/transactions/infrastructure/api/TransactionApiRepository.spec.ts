@@ -20,12 +20,12 @@ describe("TransactionApiRepository", () => {
     const repository = new TransactionApiRepository();
     const result = await repository.fetchTransactions();
   
-    expect(result.data).toHaveLength(mockDataQuantity);
+    expect(result.data.transactions).toHaveLength(mockDataQuantity);
     expect(result.error).toBeUndefined();
   
     mockData.transactions.forEach((mockTransaction, index) => {
       const { amount, employee, timeStamp, transactionID, type } = mockTransaction;
-      const resultTransaction = result.data[index];
+      const resultTransaction = result.data.transactions[index];
   
       expect(resultTransaction.amount).toBe(amount);
       expect(resultTransaction.employee.id).toBe(employee.id);
@@ -43,8 +43,7 @@ describe("TransactionApiRepository", () => {
     const repository = new TransactionApiRepository();
     const result = await repository.fetchTransactions();
 
-    expect(result.data).toHaveLength(0);
-    expect(result.id).toBeNull;
+    expect(result.data).toBeNull;
     expect(result.error).toBeDefined();
   });
 });

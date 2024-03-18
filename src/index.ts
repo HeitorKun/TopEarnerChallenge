@@ -1,6 +1,7 @@
 import { TransactionApiRepository } from "./transactions/infrastructure/api/transaction/TransactionApiRepository";
 import { TransactionProcessor } from "./transactions/services/TransactionProcessor";
 import { getPreviousYear } from "./transactions/helpers/date";
+import { TaskSubmissionRepository } from "./transactions/infrastructure/api/task/TaskSubmissionAPIRepository";
 
 async function main() {
   const repository = new TransactionApiRepository();
@@ -10,7 +11,8 @@ async function main() {
     console.log("Error fetching:");
     return;
   }
-  const transactions = transactionsFetchResult.data;
+  const fetchId = transactionsFetchResult.data.id;
+  const transactions = transactionsFetchResult.data.transactions;
   const transactionProcessor = new TransactionProcessor(transactions);
   const topEarnersAlphaTransactionsFromLastYear = transactionProcessor
     .filterByTopEarner()

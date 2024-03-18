@@ -4,7 +4,6 @@ export interface ITransactionRepository {
   fetchTransactions(): Promise<TransactionFetchResult>;
 }
 export type TransactionFetchResult = {
-  id?: string
-  data: Transaction[];
+  data?: { id: string; transactions: Transaction[] };
   error?: string;
 };
