@@ -1,4 +1,4 @@
-import { Transaction } from "../entities/transaction";
+import { Transaction } from "../entities/Transaction";
 
 export class TransactionProcessor {
   private transactions: Transaction[];

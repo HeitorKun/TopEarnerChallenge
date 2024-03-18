@@ -10,6 +10,6 @@
     "outDir": "dist",
     "declaration": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts"], // Include test files
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["src/**/*.spec.ts", "node_modules"]
 }
