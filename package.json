@@ -2,11 +2,12 @@
   "name": "adp-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "start": "node project/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc && node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "coding-challenge",
@@ -18,5 +19,9 @@
   "dependencies": {
     "axios": "^1.6.8",
     "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.28",
+    "typescript": "^5.4.2"
   }
 }
