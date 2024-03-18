@@ -3,7 +3,7 @@ import { Transaction } from "../../../entities/Transaction";
 import {
   ITransactionRepository,
   TransactionFetchResult,
-} from "../../../repositories/TransactionRepository";
+} from "../../../repositories/transaction/TransactionRepository";
 import { TransactionResponse } from "./TransactionApiRepositoryDTO";
 import "dotenv/config";
 
