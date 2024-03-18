@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "declaration": true
+  },
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": ["src/**/*.spec.ts", "node_modules"]
+}
