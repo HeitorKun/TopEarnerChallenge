@@ -7,8 +7,6 @@ export interface ITaskRepository {
 }
 
 export enum TaskSubmissionStatus {
-  Success = 200,
-  BadRequest = 400,
-  NotFound = 404,
-  ServerError = 503
+  Success = "Success",
+  Failure = "Failure"
 }
